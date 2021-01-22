@@ -1,9 +1,12 @@
-/** This file comtains mongoose schema and some useful methods to communicate with database for article */
+/**
+ * Article Model Class
+ * This file contains schema/model and CURD operations using mongoose service.
+ */
 
 const mongoose = require('../../common/services/mongoose.service').mongoose;
 const Schema = mongoose.Schema;
 
-/** articles schema starts here */
+/** article model */
 const articleSchema = new Schema({
     title: String,
     authorUsername: String,
@@ -21,20 +24,31 @@ const articleSchema = new Schema({
     updatedAt: String
 });
 
-/** articles schema ends here */
-
-/** convert type of @field _id of ObjectId to hex string and returns as a new virtual field @field 'id' */
+/**
+ * converts type of @field _id of ObjectId to hex string and returns as a new virtual field @field 'id'
+ * @param {any} id the article id
+ * @returns {string} the hex string
+ */
 articleSchema.virtual('id').get(function () {
     return this._id.toHexString();
 });
 
-/** Find article by id */
+/**
+ * finds article by id
+ * @param {any} id the article id
+ * @returns {article} the article object
+ */
 articleSchema.findById = function (cb) {
     return this.model('Articles').find({ id: this.id }, cb);
 };
 
 const Article = mongoose.model('Articles', articleSchema);
 
+/**
+ * finds article by id
+ * @param {any} id the article id
+ * @returns {Promise} a promise that is executed by contoller or caller to get the article
+ */
 exports.findById = (id) => {
     return Article.findById(id)
         .then((result) => {
@@ -44,13 +58,22 @@ exports.findById = (id) => {
         });
 };
 
-/** save article in database */
+/**
+ * saves article in the data store
+ * @param {any} the articleData the article object 
+ * @returns {Promise} a promise that is executed by contoller or caller to create the article
+ */
 exports.createArticle = (articleData) => {
     const article = new Article(articleData);
     return article.save();
 };
 
-/** Filter and or order articles by tags and / or author */
+
+/**
+ * filters articles by tags and/or author id
+ * @param {any} the query object containin sort, filter, tags 
+ * @returns {Promise} a promise that is executed by contoller or caller to get the list of articles
+ */
 exports.filter = (query) => {
     return new Promise((resolve, reject) => {
         const filterQuery = [];
@@ -84,14 +107,23 @@ exports.filter = (query) => {
     });
 }
 
-/** update article */
+/**
+ * updates articles 
+ * @param {int} the id for the article
+ * @param {article} the articleData with data for the article object
+ * @returns {Promise} a promise that is executed by contoller or caller to update article info
+ */
 exports.patchArticle = (id, articleData) => {
     return Article.findOneAndUpdate({
         _id: id
     }, articleData, { new: true, useFindAndModify: false });
 };
 
-/** remove article by Id */
+/**
+ * removes article
+ * @param {int} the articleId for the article
+ * @returns {Promise} a promise that is executed later by contoller or caller to delete article
+ */
 exports.removeById = (articleId) => {
     return new Promise((resolve, reject) => {
         Article.deleteOne({ _id: articleId }, (err) => {

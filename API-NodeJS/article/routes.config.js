@@ -1,9 +1,15 @@
-/** This file containes route for search, fetch, add, update & delete the articles  */
+/** Article Router Config
+ * This file containes route for search, fetch, add, update & delete the articles  
+ * */
 
 const ArticleController = require('./controllers/article.controller');
 const PermissionMiddleware = require('../common/middlewares/auth.permission.middleware');
 const ValidationMiddleware = require('../common/middlewares/auth.validation.middleware');
 
+/**
+ * Congig routes for Search, Create, Update, Find and Delete APIs
+ * @param {express} the express app 
+ */
 exports.routesConfig = function (app) {
     /** Search article basedon author and / or tags */
     // Post is used to get the params from body
