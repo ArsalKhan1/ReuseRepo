@@ -19,7 +19,7 @@
 
 <!-- List of articles -->
 <div *ngFor="let article of articles; let i = index;" nz-row [nzJustify]="'center'" [nzGutter]="8">
-    <div nz-col nzSpan="12" style="margin-bottom: 10px">
+    <div nz-col nzSpan="12">
         <nz-card style="margin-top: 16px" [nzLoading]="false"
             [nzActions]="tabPosition === 'my' && article?.authorUsername === username ? [editTemplate, deleteTemplate] : []">
             <nz-card-meta [nzTitle]="title" [nzDescription]="article.description">
@@ -29,6 +29,12 @@
             <ng-template #title>
                 <a [routerLink]="['../', article._id]">{{article.title}}</a>
             </ng-template>
+
+            <!-- Thumbnail -->
+            <ng-template #articleCoverTemplate>
+                <img *ngIf="article?.image" class="myImage" alt="example"
+                    [src]="article?.image"/>
+            </ng-template> 
 
             <!-- edit action, can be seen only in my artilcles -->
             <ng-template #editTemplate>

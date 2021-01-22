@@ -18,7 +18,7 @@ The application uses 3 tiers.
    The application uses an out of the box Angular and Material Design skin. We used angular cli ng commands to spawn the project. See details in [/UI-Angular/README.md](UI-Angular/README.md)
    
    [VP] Added thumbnails for articles that have images
-   ![](images/thumbnail.PNG) 
+   ![](images/thumbnail.png) 
 
 ## 2. API (NodeJS and ExpressJS)
    Created a shell API using NodeJS by following this [example](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)  
