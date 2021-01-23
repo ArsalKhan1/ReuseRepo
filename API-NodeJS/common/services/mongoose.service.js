@@ -28,7 +28,6 @@ const connectWithRetry = () => {
         if(!isInTest) { console.log('MongoDB is connected'); }
     });
 };
-
 connectWithRetry();
 
 exports.mongoose = mongoose;
