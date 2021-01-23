@@ -1,3 +1,10 @@
+/**
+   * article list component
+   * @remarks
+   * renders a list of articles.
+   * if user is logged in and have admin rights, it will let user edit or delete the articles
+   */
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';

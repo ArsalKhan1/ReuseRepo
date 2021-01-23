@@ -1,3 +1,10 @@
+/**
+   * SArticle Details
+   * @remarks
+   * It renders article details.
+   * If user has update permission, it allows user to update the article
+   * it also serves as data entry screen to create article
+   */
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';

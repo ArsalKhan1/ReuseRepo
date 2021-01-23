@@ -1,3 +1,8 @@
+/**
+   * Search Component
+   * @remarks
+   * It takes text based tag or take an image, parse it to extract tag and then query articles api for matching articles.
+   */
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
