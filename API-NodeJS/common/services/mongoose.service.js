@@ -1,8 +1,10 @@
-/** This is mainly used for creating connection with Azure Cosmos DB */
+/** 
+ * This is mainly used for creating connection with Azure Cosmos/mongo DB 
+ * */
 
 const mongoose = require('mongoose');
 const config = require('../config/env.config');
-let count = 0;
+
 
 mongoose.set('useFindAndModify', false);
 
@@ -19,8 +21,11 @@ const options = {
 
 };
 
-//AK - the retry is built into the lib, we just need to use it right so that even when it disconnect, it connect back automatically. 
-// we should not be retrying it behind timeout.
+
+/**
+ * Connect to Mongo / cosmos db  
+ * reacs the connection string from config and connects with mongo / cosmos db.
+ */
 const connectWithRetry = () => {
     var isInTest = typeof global.it === 'function'; // True if Mocha is running a test
     mongoose.connect(config.dbConn, options)

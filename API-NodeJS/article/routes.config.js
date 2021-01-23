@@ -7,7 +7,7 @@ const PermissionMiddleware = require('../common/middlewares/auth.permission.midd
 const ValidationMiddleware = require('../common/middlewares/auth.validation.middleware');
 
 /**
- * Congig routes for Search, Create, Update, Find and Delete APIs
+ * Config routes for Search, Create, Update, Find and Delete APIs
  * @param {express} the express app 
  */
 exports.routesConfig = function (app) {

@@ -1,8 +1,20 @@
-//This file is from google's detect object api.
-//ref: https://cloud.google.com/vision/docs/object-localizer
+/**
+ * Image Extractor Controller
+ * It extracts objects or tags from images using google detect object API
+ * ref: https://cloud.google.com/vision/docs/object-localizer
+ */
+
+
 const vision = require('@google-cloud/vision');
 const fs = require('fs');
 
+
+/**
+ * extracts tags from image file
+ * 
+ * @param {Object} req the http request the brings image data
+ * @param {Object} res the http response sends array of tags in body and returns success code 200 if successful.
+ */
 exports.extract = (req, res) => {
     const { file } = req.files;
 
