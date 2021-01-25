@@ -50,6 +50,7 @@ The application uses 3 tiers.
    ![](images/testing.PNG)
    
 # Sources
-   [VP] - vector images from [unDraw](https://undraw.co/)
-        - icons from [Font Awesome](https://fontawesome.com/)
-        - fonts from [Google Fonts](https://fonts.google.com/specimen/Kumbh+Sans)
+   [VP] 
+   - vector images from [unDraw](https://undraw.co/)
+   - icons from [Font Awesome](https://fontawesome.com/)
+   - fonts from [Google Fonts](https://fonts.google.com/specimen/Kumbh+Sans)
