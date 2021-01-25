@@ -30,7 +30,7 @@ The application uses 3 tiers.
    ![](images/cards.gif)
    
    [VP] Added footers (responsive to resizing)
-   ![](images/footer.gif)
+   ![](images/footers.gif)
    
    [VP] Removed social media section and media icons, moved copyrights to the bottom
    ![](images/footer2.0.png)
