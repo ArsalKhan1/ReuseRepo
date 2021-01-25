@@ -16,7 +16,14 @@ const userSchema = new Schema({
     },
     hash: String,
     salt: String,
-    permission: Number
+    permission: Number,
+    items: [{
+        name: String,
+        tags: [{
+            type: String
+        }],
+        quantity: Number
+    }]
 });
 
 userSchema.virtual('id').get(function () {

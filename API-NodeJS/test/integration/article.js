@@ -32,7 +32,10 @@ const testSearchQuery = {
 var accessToken;
 var newArticle;
 
-describe('Article', function () {
+// Run the auth and user integration first, as this relies on those systems
+require('./userAuth.js');
+
+describe('Article along with user and authentication integration', function () {
 
     // Test adding an article
     describe('Add a new article', function () {
@@ -152,7 +155,6 @@ describe('Article', function () {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
-                    let found = findArticle(res.body);
                     assert.strictEqual(findArticle(res.body), true);
                     done();
                 });
@@ -166,7 +168,6 @@ describe('Article', function () {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
-                    let found = findArticle(res.body);
                     assert.strictEqual(findArticle(res.body), false);
                     done();
                 });

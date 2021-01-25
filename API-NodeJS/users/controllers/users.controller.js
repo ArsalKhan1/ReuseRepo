@@ -107,3 +107,135 @@ exports.removeById = (req, res) => {
             res.status(204).send({});
         });
 };
+
+/**
+ * Check if there is another item with the same name but different tags
+ * that already belongs to the user
+ * 
+ * @param {Object} items the items currently assosciated with the user
+ * @param {Object} newItem the new item being added
+ * @return {Boolean} whether an invalid duplicate exists 
+ */
+function checkInvalidDuplicateItems(items, newItem) {
+    newItem.tags.sort();
+    let newTags = JSON.stringify(newItem.tags);
+    let returnVal = false;
+
+    items.forEach(i => {
+        if(i.name == newItem.name) {
+            // Order of tags is irrelevant so sort before comparing
+            i.tags.sort();
+
+            if(JSON.stringify(i.tags) != newTags) {
+                returnVal = true;
+            }
+        }
+    });
+    return returnVal;
+}
+
+/**
+ * Add an item to a user's list
+ * 
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ */
+exports.addItem = async (req, res) => {
+    let user = await UserModel.findByUsername(req.jwt.username)
+        .then((user) => {
+            if(user[0]) {
+                return user[0];
+            }
+            res.status(400).send({ errors: "User not found" });
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        });
+    
+    if (res.statusCode == 400) {
+        return;
+    }
+
+    if(!user.items) {
+        user.items = [];
+    }
+    let newItem = {
+        name: req.body.itemName,
+        tags: req.body.tags
+    }
+    if(checkInvalidDuplicateItems(user.items, newItem)) {
+        console.log("failed");
+        res.status(400).send({errors: "Cannot have 2 different items with the same name"});
+        return;
+    }
+    user.items.push(newItem);
+
+    UserModel.patchUser(req.jwt.userId, user)
+        .then((result) => {
+            res.status(204).send(result);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        });
+};
+
+/**
+ * Delete an item from a user's list
+ * 
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ */
+exports.removeItem = async (req, res) => {
+    let user = await UserModel.findByUsername(req.jwt.username)
+        .then((user) => {
+            if (user[0]) {
+                return user[0];
+            }
+            res.status(400).send({ errors: "User not found" });
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        });
+    
+    if(res.statusCode == 400) {
+        return;
+    }
+    if(!user.items) {
+        res.status(400).send({errors: "This user has no items"});
+        return;
+    }
+    let index = -1;
+    for (let i = 0; i < user.items.length; i++) {
+        if(user.items[i]._id == req.body.itemId) {
+            index = i;
+        }
+    }
+    if(index == -1) {
+        res.status(400).send({errors: "Item not found"});
+        return;
+    }
+    user.items.splice(index, 1);
+    UserModel.patchUser(req.jwt.userId, user)
+        .then((result) => {
+            res.status(204).send(result);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        });
+};
+
+/**
+ * Get all the items belonging to a user
+ * 
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ */
+exports.getItems = (req, res)  => {
+    UserModel.findById(req.params.userId)
+        .then((result) => {
+            if (result == null) {
+                res.status(404).send({ error: "User not found" });
+            }
+            res.status(200).send(result.items);
+        });
+}
