@@ -20,6 +20,20 @@ The application uses 3 tiers.
    [VP] Added thumbnails for articles that have images
    ![](images/thumbnail.png) 
    
+   [VP] Upgraded Home Page with dynamic navbar (now responsive to resizing)
+   ![](images/homepage.gif)
+   
+   [VP] Added icons to the navbar
+   ![](images/homepage2.0.png)
+   
+   [VP] Services cards to navigate (responsive to resizing)
+   ![](images/cards.gif)
+   
+   [VP] Added footers (responsive to resizing)
+   ![](images/footer.gif)
+   
+   [VP] Removed social media section and media icons, moved copyrights to the bottom
+   ![](images/footer2.0.png)
 
 ## 2. API (NodeJS and ExpressJS)
    Created a shell API using NodeJS by following this [example](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)  
