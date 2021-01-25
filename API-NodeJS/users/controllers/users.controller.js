@@ -164,7 +164,6 @@ exports.addItem = async (req, res) => {
         tags: req.body.tags
     }
     if(checkInvalidDuplicateItems(user.items, newItem)) {
-        console.log("failed");
         res.status(400).send({errors: "Cannot have 2 different items with the same name"});
         return;
     }
@@ -172,7 +171,7 @@ exports.addItem = async (req, res) => {
 
     UserModel.patchUser(req.jwt.userId, user)
         .then((result) => {
-            res.status(204).send(result);
+            res.status(200).send(result.items[result.items.length - 1]);
         })
         .catch((err) => {
             res.status(400).send(err);
@@ -206,7 +205,7 @@ exports.removeItem = async (req, res) => {
     }
     let index = -1;
     for (let i = 0; i < user.items.length; i++) {
-        if(user.items[i]._id == req.body.itemId) {
+        if(user.items[i]._id == req.params.itemId) {
             index = i;
         }
     }

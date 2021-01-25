@@ -27,15 +27,15 @@ exports.routesConfig = function (app) {
         PermissionMiddleware.requirePermissionLevel(ADMIN),
         UsersController.removeById
     ]);
-    app.post('/user/items/insert', [
+    app.post('/users/items/insert', [
         ValidationMiddleware.requireValidJWT,
         UsersController.addItem
     ]);
-    app.delete('/user/items/delete', [
+    app.delete('/users/items/delete/:itemId', [
         ValidationMiddleware.requireValidJWT,
         UsersController.removeItem
     ]);
-    app.get('/user/:userId/items', [
+    app.get('/users/:userId/items', [
         ValidationMiddleware.requireValidJWT,
         PermissionMiddleware.requireSameUser,
         UsersController.getItems

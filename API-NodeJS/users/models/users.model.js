@@ -21,8 +21,7 @@ const userSchema = new Schema({
         name: String,
         tags: [{
             type: String
-        }],
-        quantity: Number
+        }]
     }]
 });
 
@@ -103,7 +102,8 @@ exports.createUser = (userData) => {
 exports.patchUser = (id, userData) => {
     return User.findOneAndUpdate({
         _id: id
-    }, userData);
+    }, userData,
+    {new: true});
 };
 
 /**
