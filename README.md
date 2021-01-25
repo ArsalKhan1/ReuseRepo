@@ -19,6 +19,7 @@ The application uses 3 tiers.
    
    [VP] Added thumbnails for articles that have images
    ![](images/thumbnail.png) 
+   
 
 ## 2. API (NodeJS and ExpressJS)
    Created a shell API using NodeJS by following this [example](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)  
@@ -47,3 +48,8 @@ The application uses 3 tiers.
    [RT] Wrote unit tests and integration tests for the user and authentication features of the API.  
         Run `npm test` in /API-NodeJS to run the tests and get output in the terminal.  
    ![](images/testing.PNG)
+   
+# Sources
+   [VP] - vector images from [unDraw](https://undraw.co/)
+        - icons from [Font Awesome](https://fontawesome.com/)
+        - fonts from [Google Fonts](https://fonts.google.com/specimen/Kumbh+Sans)
