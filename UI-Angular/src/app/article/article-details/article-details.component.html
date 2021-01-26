@@ -32,7 +32,8 @@
                             <nz-select [(ngModel)]="article.tags" class="select" nzEditable
                                 nzDropdownClassName="hide-dropdown" [nzOpen]="false"
                                 [nzCustomTemplate]="multipleTemplate" nzMode="tags" nzPlaceHolder="Tags"
-                                [nzAllowClear]="true" [nzFilterOption]="defaultFilterOption">
+                                [nzAllowClear]="true" [nzFilterOption]="defaultFilterOption" (nzBlur)="onBlur()"
+                                (nzOnSearch)="searchValue = $event">
                             </nz-select>
 
                             <ng-template #multipleTemplate let-selected>
