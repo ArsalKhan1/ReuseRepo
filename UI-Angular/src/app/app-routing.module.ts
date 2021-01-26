@@ -1,3 +1,5 @@
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArticleDetailsComponent } from './article/article-details/article-details.component';
@@ -11,9 +13,18 @@ import { LogoutComponent } from './account/logout/logout.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'article/search',
+    redirectTo: 'home',
     pathMatch: "full"
   },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  // {
+  //   path: '',
+  //   redirectTo: 'article/search',
+  //   pathMatch: "full"
+  // },
   {
     path: 'register',
     component: RegisterComponent
@@ -66,6 +77,11 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent
+  },
+  // if page not found
+  {
+    path: '**',
+    component: PagenotfoundComponent
   }
 ];
 
