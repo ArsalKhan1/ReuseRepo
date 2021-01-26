@@ -2,11 +2,11 @@
     margin: 10px;
 }
 
-.myImage {
+.thumbnail {
     float: right;
-    display: block;
-    //height: auto;
-    width: 50%;
+    max-width: 500px;
+    max-height: 500px;
     padding-right: 5%;
     padding-top: 5%;
+    object-fit: cover;
 }
