@@ -43,7 +43,16 @@ export class ArticleListComponent implements OnInit {
 
   fetchArticles() {
     const sortObj = { field: 'updatedAt', order: 'desc' };
-    const listArticleQuery = this.tabPosition === 'all' ? { query: { sort: sortObj } } : { query: { authorUsername: this.username, sort: sortObj } };
+    var listArticleQuery;
+    if(this.tabPosition === 'all') {
+      listArticleQuery = { query: { sort: sortObj } };
+    }
+    else if(this.tabPosition === 'my') {
+      listArticleQuery = { query: { authorUsername: this.username, sort: sortObj } };
+    }
+    else {
+      listArticleQuery = { query: { authorUsername: this.username, sort: sortObj } };
+    }
     this.http.post(`${environment.apiURL}article/search`, listArticleQuery).subscribe((articles: any) => {
       this.articles = articles;
     });

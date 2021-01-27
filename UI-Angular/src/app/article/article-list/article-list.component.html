@@ -1,6 +1,7 @@
 <div style="margin-top: 2%;" nz-row [nzJustify]="'center'">
     <button nz-button nzType="primary" class="menu-button" [routerLink]="['../', 'search']"><i nz-icon nzType="search"></i>Search</button>
     <button nz-button nzType="default" class="menu-button" [routerLink]="['../', 'create']">New Article</button>
+    <button nz-button nzType="default" class="menu-button" [routerLink]="'/item/list'">Edit Item List</button>
     <button nz-button nzType="dashed" class="menu-button" [routerLink]="'/logout'" nzDanger>Log out</button>
 </div>
 
@@ -13,6 +14,8 @@
 
         <!-- User can select "My Articles" to see all the articles created by him / her and can delete & edit as well.-->
         <label nz-radio-button [nzValue]="'my'">My Articles</label>
+
+        <label nz-radio-button [nzValue]="'forMe'">Articles For Me</label>
     </nz-radio-group>
 </div>
 

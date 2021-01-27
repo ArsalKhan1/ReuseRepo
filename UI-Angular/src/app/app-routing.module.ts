@@ -7,6 +7,7 @@ import { RegisterComponent } from './account/register/register.component';
 import { LoginComponent } from './account/login/login.component';
 import { ProfileComponent } from './account/profile/profile.component';
 import { LogoutComponent } from './account/logout/logout.component';
+import { ItemListComponent } from './account/item-list/item-list.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent
+  },
+  {
+    path: 'item/list',
+    component: ItemListComponent
   }
 ];
 

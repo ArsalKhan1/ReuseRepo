@@ -1,0 +1,27 @@
+<!-- List of items -->
+<div *ngFor="let item of items; let i = index;" nz-row [nzJustify]="'center'" [nzGutter]="8">
+    <div nz-col nzSpan="12" style="margin-bottom: 16px">
+        <nz-card style="margin-top: 16px" [nzLoading]="false"
+            [nzActions]="[editTemplate, deleteTemplate]"
+            [nzCover]="articleCoverTemplate">
+            <nz-card-meta [nzTitle]="title" [nzDescription]="item.tags">
+            </nz-card-meta>
+
+            <!-- Item Name -->
+            <ng-template #title>
+                <a [routerLink]="['../', item._id]">{{item.name}}</a>
+            </ng-template>
+
+            <!-- edit action, can be seen only in my artilcles -->
+            <ng-template #editTemplate>
+                <button nz-button nzType="primary" [routerLink]="['../', item._id]"><i nz-icon
+                        nzType="edit"></i>Edit</button>
+            </ng-template>
+
+            <!-- delete action, can be seen only in my artilcles -->
+            <ng-template #deleteTemplate>
+                <button nz-button (click)="delete(item, i)"><i nz-icon nzType="delete"></i> Delete</button>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>
