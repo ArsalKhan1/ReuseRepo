@@ -66,6 +66,7 @@ exports.getById = (req, res) => {
         .then((result) => {
             if(result == null) {
                 res.status(404).send({ error: "User not found" });
+                return;
             }
             res.status(200).send(result);
         });

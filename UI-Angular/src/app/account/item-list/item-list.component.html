@@ -1,4 +1,9 @@
-<!-- List of items -->
+<div style="margin-top: 2%;" nz-row [nzJustify]="'center'">
+    <button nz-button nzType="primary" class="menu-button" [routerLink]="['../', 'create']">New Article</button>
+    <button nz-button nzType="default" class="menu-button" [routerLink]="'/article/list'">Back</button>
+</div>
+
+<!-- List of items --> 
 <div *ngFor="let item of items; let i = index;" nz-row [nzJustify]="'center'" [nzGutter]="8">
     <div nz-col nzSpan="12" style="margin-bottom: 16px">
         <nz-card style="margin-top: 16px" [nzLoading]="false"
@@ -12,13 +17,13 @@
                 <a [routerLink]="['../', item._id]">{{item.name}}</a>
             </ng-template>
 
-            <!-- edit action, can be seen only in my artilcles -->
+            <!-- edit action -->
             <ng-template #editTemplate>
                 <button nz-button nzType="primary" [routerLink]="['../', item._id]"><i nz-icon
                         nzType="edit"></i>Edit</button>
             </ng-template>
 
-            <!-- delete action, can be seen only in my artilcles -->
+            <!-- delete action -->
             <ng-template #deleteTemplate>
                 <button nz-button (click)="delete(item, i)"><i nz-icon nzType="delete"></i> Delete</button>
             </ng-template>

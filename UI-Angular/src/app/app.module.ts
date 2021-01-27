@@ -25,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ItemListComponent } from './account/item-list/item-list.component';
 
 registerLocaleData(en);
 
@@ -41,6 +42,7 @@ registerLocaleData(en);
     NavbarComponent,
     FooterComponent,
     PagenotfoundComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,

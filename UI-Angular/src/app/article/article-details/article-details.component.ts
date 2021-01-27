@@ -131,7 +131,7 @@ export class ArticleDetailsComponent implements OnInit {
     console.log(file);
   }
 
-  /** routing ser back */
+  /** routing back */
   goBack() {
     this.location.back();
     console.log("back");
