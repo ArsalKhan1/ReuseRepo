@@ -82,6 +82,9 @@ The application uses 3 tiers architecture
    
    [VP] Changed the homepage image
    ![](images/homepage3.0.png)
+   
+   [VP] Added a leaf icon to the tab
+   ![](images/icon.png)
 
 ### 2. API (NodeJS and ExpressJS)
    Created a shell API using NodeJS by following this [example](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)  
