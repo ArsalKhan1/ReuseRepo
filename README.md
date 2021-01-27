@@ -63,27 +63,35 @@ The application uses 3 tiers architecture
    The application uses an out of the box Angular and Material Design skin. We used angular cli ng commands to spawn the project. See details in [/UI-Angular/README.md](UI-Angular/README.md)
    
    [VP] Added thumbnails for articles that have images
+   
    ![](images/thumbnail.png) 
    
    [VP] Upgraded Home Page with dynamic navbar (now responsive to resizing)
+   
    ![](images/homepage.gif)
    
    [VP] Added icons to the navbar
+   
    ![](images/homepage2.0.png)
    
    [VP] Services cards to navigate (responsive to resizing)
+   
    ![](images/cards.gif)
    
    [VP] Added footers (responsive to resizing)
+   
    ![](images/footers.gif)
    
    [VP] Removed social media section and media icons, moved copyrights to the bottom
+   
    ![](images/footer2.0.png)
    
    [VP] Changed the homepage image
+   
    ![](images/homepage3.0.png)
    
    [VP] Added a leaf icon to the tab
+   
    ![](images/icon.png)
 
 ### 2. API (NodeJS and ExpressJS)
