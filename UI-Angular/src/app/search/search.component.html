@@ -1,11 +1,17 @@
 <div class="main-container">
     <div class="search-engine">
 
+         <!-- search image 
+         <div nz-row [nzJustify]="'center'" style="padding-bottom: 45px;">
+            <img [src]="'/assets/3-rs-diagram.png'">
+        </div>
+        -->
+
         <div nz-row [nzJustify]="'center'" [nzGutter]="8">
 
             <div *ngIf="!loggedIn" nz-col nzSpan="2">
                 <button [nzSize]="'large'" nz-button nzType="primary" [routerLink]="'/login'"><i nz-icon
-                    nzType="user-add"></i>Log In</button>
+                        nzType="user-add"></i>Log In</button>
             </div>
             <div *ngIf="loggedIn" nz-col nzSpan="2.5">
                 <button [nzSize]="'large'" nz-button nzType="primary" [routerLink]="'/article/list'"><i nz-icon
@@ -20,9 +26,10 @@
 
             <!-- Search Box to add tags -->
             <div nz-col nzSpan="8">
-                <nz-select class="select" nzDropdownClassName="hide-dropdown" [nzSize]="'large'" [nzOpen]="false"
+                <nz-select #sss class="select" nzDropdownClassName="hide-dropdown" [nzSize]="'large'" [nzOpen]="false"
                     nzMode="tags" nzPlaceHolder="Search" [nzAllowClear]="true" [(ngModel)]="selectedSearch"
-                    [nzCustomTemplate]="multipleTemplate" [nzFilterOption]="defaultFilterOption">
+                    [nzCustomTemplate]="multipleTemplate" [nzFilterOption]="defaultFilterOption" (nzBlur)="onBlur()"
+                    (nzOnSearch)="searchValue = $event">
                     <nz-option *ngFor="let option of []" [nzLabel]="option.label.value" [nzValue]="option.value.label">
                     </nz-option>
                 </nz-select>
@@ -41,6 +48,7 @@
                     </div>
                 </ng-template>
             </div>
+
 
             <!-- Upload button to upload & extract objects from the image and add them as tags in search box -->
             <div nz-col nzSpan="1">

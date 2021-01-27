@@ -31,6 +31,14 @@ export class ArticleDetailsComponent implements OnInit {
   showEditImageUrlPopOver = false;
   username: string;
 
+  /** Search value enterted by user */
+  searchValue: string;
+
+  /**
+   * 
+   * @param activatedRoute to see the current router state
+   * @param http to make API call to backend
+   */
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
@@ -61,7 +69,13 @@ export class ArticleDetailsComponent implements OnInit {
     }
   }
 
+
   /** To not allow user to add duplicate tags */
+  /**
+   * 
+   * @param searchValue entered by user
+   * @param item list of selected items
+   */
   defaultFilterOption = (searchValue, item) => {
     if (item && item.nzLabel && typeof (item.nzLabel) !== 'object') {
       return item.nzLabel.toLowerCase().indexOf(searchValue.toLowerCase()) > -1;
@@ -70,6 +84,7 @@ export class ArticleDetailsComponent implements OnInit {
       return false;
     }
   };
+
 
   /** Create / Update article in database */
   save() {
@@ -89,21 +104,21 @@ export class ArticleDetailsComponent implements OnInit {
     if (this.article?._id) {
       /** Article Update Request */
       this.http.put(`${environment.apiURL}article/update/${this.article._id}`,
-                    this.article,
-                    {headers:{Authorization: `Bearer ${this.auth.getToken()}`}})
-                    .subscribe((savedArticle) => {
-                      this.article = savedArticle;
-                      this.editMode = false;
-                    });
+        this.article,
+        { headers: { Authorization: `Bearer ${this.auth.getToken()}` } })
+        .subscribe((savedArticle) => {
+          this.article = savedArticle;
+          this.editMode = false;
+        });
     } else {
       /** Article Create Request */
       this.http.post(`${environment.apiURL}article/create`,
-                      this.article,
-                      {headers:{Authorization: `Bearer ${this.auth.getToken()}`}})
-                      .subscribe((savedArticle) => {
-                        this.article = savedArticle;
-                        this.editMode = false;
-                      });
+        this.article,
+        { headers: { Authorization: `Bearer ${this.auth.getToken()}` } })
+        .subscribe((savedArticle) => {
+          this.article = savedArticle;
+          this.editMode = false;
+        });
     }
   }
 
@@ -116,8 +131,18 @@ export class ArticleDetailsComponent implements OnInit {
     console.log(file);
   }
 
+  /** routing ser back */
   goBack() {
     this.location.back();
     console.log("back");
   }
+
+  /** When blur, if users has already entered any search value, convert it into the tag */
+  onBlur() {
+    if (this.searchValue) {
+      this.article.tags = [...this.article.tags, this.searchValue];
+      this.searchValue = '';
+    }
+  }
+
 }

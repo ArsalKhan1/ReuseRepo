@@ -4,7 +4,7 @@
    * It takes text based tag or take an image, parse it to extract tag and then query articles api for matching articles.
    */
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { environment } from '../../environments/environment';
@@ -26,6 +26,7 @@ export class SearchComponent {
   /** api endpoint to extract objects from the image */
   tagExtractURL = environment.apiURL + 'image-extract';
 
+
   /** to show the list of tags added by users */
   tags = [];
 
@@ -35,6 +36,14 @@ export class SearchComponent {
   // If user is logged in
   loggedIn = false;
 
+  /** Search value enterted by user */
+  searchValue: string;
+
+  /**
+   * 
+   * @param sanitizer to sanitize content
+   * @param http to make API request to backend
+   */
   constructor(
     /** injected sanitizer to use it later to sanitize content to avoid xss attacks */
     public sanitizer: DomSanitizer,
@@ -51,6 +60,10 @@ export class SearchComponent {
   }
 
   /** It gets called when user uploads an image to extract the objects out of it */
+  /**
+   * 
+   * @param data based on upload file(s) event 
+   */
   handleChange(data: NzUploadChangeParam) {
     const file = { ...data.file };
 
@@ -66,7 +79,14 @@ export class SearchComponent {
     }
   }
 
+
+
   /** to avoid adding duplicate tags */
+  /**
+   * 
+   * @param searchValue entered by user
+   * @param item  list
+   */
   defaultFilterOption = (searchValue, item) => {
     if (item && item.nzLabel && typeof (item.nzLabel) !== 'object') {
       return item.nzLabel.toLowerCase().indexOf(searchValue.toLowerCase()) > -1;
@@ -77,6 +97,7 @@ export class SearchComponent {
   };
 
   /** It gets called when user clicks on search */
+
   search() {
 
     /** Map the tags in proper format as expected by Article schema in Backend */
@@ -97,8 +118,20 @@ export class SearchComponent {
 
   /** DomSanitizer helps preventing Cross Site Scripting Security bugs (XSS) by sanitizing values to be safe to use in the different DOM contexts. */
   /** Here we have image url and we are sanitizing it and make it safe */
+  /**
+   * 
+   * @param url upoaded image url
+   */
   sanitizeImageURL(url) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+
+  /** When blur, if users has already entered any search value, convert it into the tag */
+  onBlur() {
+    if (this.searchValue) {
+      this.selectedSearch = [...this.selectedSearch, this.searchValue];
+      this.searchValue = '';
+    }
   }
 
 }

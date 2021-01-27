@@ -1,3 +1,5 @@
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArticleDetailsComponent } from './article/article-details/article-details.component';
@@ -12,9 +14,18 @@ import { ItemListComponent } from './account/item-list/item-list.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'article/search',
+    redirectTo: 'home',
     pathMatch: "full"
   },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  // {
+  //   path: '',
+  //   redirectTo: 'article/search',
+  //   pathMatch: "full"
+  // },
   {
     path: 'register',
     component: RegisterComponent
@@ -71,6 +82,11 @@ const routes: Routes = [
   {
     path: 'item/list',
     component: ItemListComponent
+  },
+  // if page not found
+  {
+    path: '**',
+    component: PagenotfoundComponent
   }
 ];
 

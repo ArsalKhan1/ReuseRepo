@@ -23,15 +23,20 @@ const options = {
 
 
 /**
- * Connect to Mongo / cosmos db  
- * reacs the connection string from config and connects with mongo / cosmos db.
+ * Connects to Mongo / cosmos db  
+ * Reads the connection string from config and connects with mongo / cosmos db.
+ * re-connects if connection is broken
  */
+let count = 0;
 const connectWithRetry = () => {
     var isInTest = typeof global.it === 'function'; // True if Mocha is running a test
     mongoose.connect(config.dbConn, options)
-    .then(() => {
-        if(!isInTest) { console.log('MongoDB is connected'); }
-    });
+        .then(() => {
+            if (!isInTest) { console.log('MongoDB is connected'); }
+        }).catch(err => {
+            console.log('MongoDB connection unsuccessful, retry after 2 seconds. ', ++count);
+            setTimeout(connectWithRetry, 2000)
+        })
 };
 connectWithRetry();
 
