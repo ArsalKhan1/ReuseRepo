@@ -63,7 +63,7 @@ The application uses 3 tiers architecture
  
 # Progress Log (to be deleted after pieces are moved to documentation folder)
 ## 1. UI (Angular + Material Design Skin)
-   The application uses an out of the box Angular and Material Design skin (to be removed UI touch up). We used angular cli ng commands to spawn the project. See details in [/UI-Angular/README.md](UI-Angular/README.md)
+   The application uses an out of the box Angular and Material Design skin (to be removed after Vijay's UI touch up). We used angular cli ng commands to spawn the project. See details in [/UI-Angular/README.md](UI-Angular/README.md)
    
    ### Homepage
    
