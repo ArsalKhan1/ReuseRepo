@@ -79,6 +79,9 @@ The application uses 3 tiers architecture
    
    [VP] Removed social media section and media icons, moved copyrights to the bottom
    ![](images/footer2.0.png)
+   
+   [VP] Changed the homepage image
+   ![](images/homepage3.0.png)
 
 ### 2. API (NodeJS and ExpressJS)
    Created a shell API using NodeJS by following this [example](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)  
