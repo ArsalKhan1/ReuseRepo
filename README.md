@@ -49,7 +49,6 @@ The application uses 3 tiers architecture
 ## Citation and Credits
    + [Angular](https://angular.io/) and [Material Design](https://material.io/design) by Google
    + [Creating Secure APIs in NodeJS](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs) by [Marcos Henrique da Silva](https://github.com/makinhs)
-   [VP]
    + vector images from [unDraw](https://undraw.co/)
    + icons from [Font Awesome](https://fontawesome.com/)
    + fonts from [Google Fonts](https://fonts.google.com/specimen/Kumbh+Sans)
