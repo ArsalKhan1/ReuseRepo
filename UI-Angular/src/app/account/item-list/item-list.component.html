@@ -1,26 +1,55 @@
 <div style="margin-top: 2%;" nz-row [nzJustify]="'center'">
-    <button nz-button nzType="primary" class="menu-button" [routerLink]="['../', 'create']">New Article</button>
+    <button nz-button nzType="primary" class="menu-button" (click)="showItemModal()">New Item</button>
     <button nz-button nzType="default" class="menu-button" [routerLink]="'/article/list'">Back</button>
 </div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Modal Title" (nzOnCancel)="handleCancel()" (nzOnOk)="createItem()"
+    [nzOkLoading]="isLoading">
+    <ng-container *nzModalContent>
+    <p nz-typography nzEditable [(nzContent)]="newItem.itemName"></p>
+
+
+    <!-- list of tags -->
+    <!-- <ng-container *nzModalContent> -->
+    <ng-container *ngIf="!editMode">
+        <nz-tag [nzColor]="'blue'" *ngFor="let tag of newItem.tags">
+            {{tag}}
+        </nz-tag>
+    
+        <!-- user can click on edit to add / remove tags if user im / herself has created the article -->
+        <button class="ant-typography-edit" style="background: transparent; border: none;"
+            (click)="editMode = true"><i nz-icon nzType="edit"></i></button>
+    </ng-container>
+    <!-- </ng-container> -->
+    
+    <!-- selection box to add / remove tags -->
+    <ng-container *ngIf="editMode">
+        <nz-select [(ngModel)]="newItem.tags" class="select" nzEditable nzDropdownClassName="hide-dropdown" [nzOpen]="false"
+            [nzCustomTemplate]="multipleTemplate" nzMode="tags" nzPlaceHolder="Tags" [nzAllowClear]="true"
+            [nzFilterOption]="defaultFilterOption" (nzBlur)="onBlur()" (nzOnSearch)="searchValue = $event">
+        </nz-select>
+    
+        <ng-template #multipleTemplate let-selected>
+            <div class="ant-select-selection-item-content">
+                {{ selected.nzLabel?.name || selected.nzLabel }}
+            </div>
+        </ng-template>
+    </ng-container>
+    </ng-container>
+</nz-modal>
 
 <!-- List of items --> 
 <div *ngFor="let item of items; let i = index;" nz-row [nzJustify]="'center'" [nzGutter]="8">
     <div nz-col nzSpan="12" style="margin-bottom: 16px">
         <nz-card style="margin-top: 16px" [nzLoading]="false"
-            [nzActions]="[editTemplate, deleteTemplate]"
+            [nzActions]="[deleteTemplate]"
             [nzCover]="articleCoverTemplate">
             <nz-card-meta [nzTitle]="title" [nzDescription]="item.tags">
             </nz-card-meta>
-
+            
             <!-- Item Name -->
             <ng-template #title>
-                <a [routerLink]="['../', item._id]">{{item.name}}</a>
-            </ng-template>
-
-            <!-- edit action -->
-            <ng-template #editTemplate>
-                <button nz-button nzType="primary" [routerLink]="['../', item._id]"><i nz-icon
-                        nzType="edit"></i>Edit</button>
+                <a>{{item.name}}</a>
             </ng-template>
 
             <!-- delete action -->

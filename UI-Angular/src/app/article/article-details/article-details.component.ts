@@ -1,5 +1,5 @@
 /**
-   * SArticle Details
+   * Article Details
    * @remarks
    * It renders article details.
    * If user has update permission, it allows user to update the article

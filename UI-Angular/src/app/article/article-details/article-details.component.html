@@ -42,6 +42,12 @@
                                 </div>
                             </ng-template>
                         </ng-container>
+
+                        <ng-container *ngIf='!editMode && !allowEdit'>
+                            <nz-tag [nzColor]="'blue'" *ngFor="let tag of article?.tags">
+                                {{tag?.name}}
+                            </nz-tag>
+                        </ng-container>
                     </div>
                 </div>
 

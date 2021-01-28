@@ -22,6 +22,13 @@ export class ItemListComponent implements OnInit {
 
   items = [];
   userId: string;
+  isVisible: boolean;
+  isLoading: boolean;
+  editMode = false;
+  newItem = {
+    itemName: 'Name',
+    tags: ['tags', 'here']
+  };
 
   constructor(
     private http: HttpClient,
@@ -38,10 +45,28 @@ export class ItemListComponent implements OnInit {
     this.fetchItems();
   }
 
-  fetchItems() {
-    this.http.get(`${environment.apiURL}users/${this.userId}/items`, {headers:{Authorization: `Bearer ${this.auth.getToken()}`}}).subscribe((items: any) => {
+  defaultFilterOption = (searchValue, item) => {
+    if (item && item.nzLabel && typeof (item.nzLabel) !== 'object') {
+      return item.nzLabel.toLowerCase().indexOf(searchValue.toLowerCase()) > -1;
+    }
+    else {
+      return false;
+    }
+  };
+
+  async fetchItems() {
+    await this.http.get(`${environment.apiURL}users/${this.userId}/items`, {headers:{Authorization: `Bearer ${this.auth.getToken()}`}}).subscribe((items: any) => {
       this.items = items;
-      console.log(items);
+      this.items.forEach(item => {
+        let spacedTags = '';
+        item.tags.forEach(i => {
+          if(spacedTags != '') {
+            spacedTags += ', ';
+          }
+          spacedTags += i;
+        });
+        item.tags = spacedTags;
+      });
     });
   }
 
@@ -58,5 +83,46 @@ export class ItemListComponent implements OnInit {
   goBack() {
     this.location.back();
     console.log("back");
+  }
+
+  showItemModal(): void {
+    this.isVisible = true;
+  }
+
+  handleErrorResponse() {
+
+  }
+
+  createItem() {
+    this.isLoading = true;
+
+    this.http.post(`${environment.apiURL}users/items/insert`,
+      this.newItem,
+      { headers: { Authorization: `Bearer ${this.auth.getToken()}` } })
+      // .pipe(catchError(this.handleErrorResponse))
+      .subscribe((savedItem) => {
+        this.fetchItems();
+        this.isVisible = false;
+        this.isLoading = false;
+        this.clearNewItem();
+      },
+      (err) => {
+        alert(err.error.errors);
+        this.isVisible = false;
+        this.isLoading = false;
+        this.clearNewItem();
+        console.log(err.error.errors);
+      });
+  }
+
+  handleCancel(): void {
+    this.isVisible = false;
+    this.clearNewItem();
+  }
+
+  private clearNewItem(): void {
+    this.newItem.itemName = 'Name';
+    this.newItem.tags = ['tags', 'here'];
+    this.editMode = false;
   }
 }
