@@ -54,6 +54,7 @@ export class ArticleDetailsComponent implements OnInit {
     /** articleId is there fetch the article from db */
     if (articleId) {
       this.http.get(`${environment.apiURL}article/${articleId}`).subscribe((article) => {
+        console.log(article);
         this.article = article;
         this.allowEdit = this.article?.authorUsername === this.username || false;
       });
@@ -62,7 +63,7 @@ export class ArticleDetailsComponent implements OnInit {
         title: 'Untitled Article',
         description: 'Add Description Here! ',
         tags: [],
-        userId: '1'
+        authorUsername: this.auth.getUsername()
       }
       this.editMode = true;
       this.allowEdit = true;
