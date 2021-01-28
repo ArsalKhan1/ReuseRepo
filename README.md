@@ -56,7 +56,7 @@ The application uses 3 tiers architecture
 
 ## Project Plan  
    + [The project specs](TBD)
-   + [The WBS along with Project Calendar](/Documentation/ProjectPlan.md) 
+   + [The WBS along with Project Calendar](Documentation/WBS.md) 
    + [The QA Plan](TBD)
   
  
