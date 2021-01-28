@@ -1,6 +1,7 @@
 const mongoose = require('../../common/services/mongoose.service').mongoose;
 const Schema = mongoose.Schema;
 
+/** User model schema */
 const userSchema = new Schema({
     firstName: String,
     lastName: String,
@@ -25,15 +26,30 @@ const userSchema = new Schema({
     }]
 });
 
+
+/**
+ * Converts type of @field _id of ObjectId to hex string and returns as a new virtual field @field 'id'
+ * 
+ * @param {any} id the user id
+ * @returns {string} the hex string
+ */
 userSchema.virtual('id').get(function () {
     return this._id.toHexString();
 });
 
-// Ensure virtual fields are serialised.
+/**
+ * Ensure virtual fields are serialzied
+ */
 userSchema.set('toJSON', {
     virtuals: true
 });
 
+/**
+ * Finds user by id
+ * 
+ * @param {any} cb the callback function for after the search
+ * @returns {user} the user object
+ */
 userSchema.findById = function (cb) {
     return this.model('Users').find({id: this.id}, cb);
 };
@@ -43,8 +59,8 @@ const User = mongoose.model('Users', userSchema);
 /**
  * Finds a user based on email address
  * 
- * @param {string} - the email address to search for
- * @returns {Promise} - a promise that executes the search
+ * @param {string} email the email address to search for
+ * @returns {Promise} a promise that executes the search
  */
 exports.findByEmail = (email) => {
     return User.find({email: email});
@@ -53,8 +69,8 @@ exports.findByEmail = (email) => {
 /**
  * Finds a user based on username
  * 
- * @param {string} - the username to search for
- * @returns {Promise} - a promise that executes the search
+ * @param {string} username the username to search for
+ * @returns {Promise} a promise that executes the search
  */
 exports.findByUsername = (username) => {
     return User.find({username: username});
@@ -63,8 +79,8 @@ exports.findByUsername = (username) => {
 /**
  * Finds a user based on ID
  * 
- * @param {string} id - the ID to search for
- * @returns {User} - the user with a matching ID
+ * @param {string} id the ID to search for
+ * @returns {User} the user with a matching ID
  */
 exports.findById = (id) => {
     return User.findById(id)
@@ -84,8 +100,8 @@ exports.findById = (id) => {
 /**
  * Add a new user to the database
  * 
- * @param {Object} userData - the data for a new user
- * @returns {Promise} - a promise for the completion of the database insertion
+ * @param {Object} userData the data for a new user
+ * @returns {Promise} a promise for the completion of the database insertion
  */
 exports.createUser = (userData) => {
     const user = new User(userData);
@@ -95,8 +111,8 @@ exports.createUser = (userData) => {
 /**
  * Update user data (username, email, password)
  * 
- * @param {String} id - the idea of the user to update
- * @param {Object} userData - the updated user data
+ * @param {String} id the idea of the user to update
+ * @param {Object} userData the updated user data
  * @returns {Promise} a promise that performs the update
  */
 exports.patchUser = (id, userData) => {
@@ -109,8 +125,8 @@ exports.patchUser = (id, userData) => {
 /**
  * Get a promise to remove the a user from the database with a given ID 
  * 
- * @param {String} userId - the ID to search for
- * @returns {Promise} - a promise that performs the deletion
+ * @param {String} userId the ID to search for
+ * @returns {Promise} a promise that performs the deletion
  */
 exports.removeById = (userId) => {
     return new Promise((resolve, reject) => {

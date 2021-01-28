@@ -14,6 +14,7 @@ chai.use(chaiHttp);
 let testUser = utilities.testUser;
 var accessToken;
 
+// Test how the authentication and user component integrate with each other
 describe('User Authentication Integration', function () {
 
     // Test adding a user

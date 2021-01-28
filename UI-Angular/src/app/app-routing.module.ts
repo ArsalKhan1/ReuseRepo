@@ -11,6 +11,9 @@ import { ProfileComponent } from './account/profile/profile.component';
 import { LogoutComponent } from './account/logout/logout.component';
 import { ItemListComponent } from './account/item-list/item-list.component';
 
+/**
+ * Linking different address routes to components
+ */
 const routes: Routes = [
   {
     path: '',

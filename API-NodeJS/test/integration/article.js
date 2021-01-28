@@ -35,6 +35,7 @@ var newArticle;
 // Run the auth and user integration first, as this relies on those systems
 require('./userAuth.js');
 
+// Test the article functionality along with how it integrates with user and authentication services
 describe('Article along with user and authentication integration', function () {
 
     // Test adding an article

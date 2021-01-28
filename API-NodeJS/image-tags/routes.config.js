@@ -5,7 +5,7 @@
 const ImageController = require('./controllers/image.controller');
 /** 
 * Config routes for Search, Create, Update, Find and Delete APIs
-* @param {express} the express app 
+* @param {Object} app the express app
 */
 exports.routesConfig = function (app) {
     app.post('/image-extract', [

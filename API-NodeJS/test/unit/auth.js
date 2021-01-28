@@ -12,6 +12,7 @@ const testUserLogin = {
     password: "passw0rd",
 }
 
+// Test the authentication service in isolation
 describe('Auth', function () {
 
     // Test adding a user

@@ -6,6 +6,10 @@ const config = require('../common/config/env.config');
 const ADMIN = config.permissionLevels.ADMIN;
 const NORMAL = config.permissionLevels.NORMAL_USER;
 
+/**
+* Config routes for the user API
+* @param {Object} app the express app
+*/
 exports.routesConfig = function (app) {
     app.post('/users/register', [
         UsersController.register

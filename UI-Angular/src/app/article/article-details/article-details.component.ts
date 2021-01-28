@@ -13,6 +13,10 @@ import { environment } from '../../../environments/environment';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Location } from '@angular/common';
 
+/**
+ * A component to show the details of an article and let
+ * the author edit
+ */
 @Component({
   selector: 'app-article-details',
   templateUrl: './article-details.component.html',
@@ -35,9 +39,10 @@ export class ArticleDetailsComponent implements OnInit {
   searchValue: string;
 
   /**
+   * Constructor that imports the appropriate services
    * 
-   * @param activatedRoute to see the current router state
-   * @param http to make API call to backend
+   * @param {Object} activatedRoute to see the current router state
+   * @param {Object} http to make API call to backend
    */
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -46,6 +51,10 @@ export class ArticleDetailsComponent implements OnInit {
     private location: Location
   ) { }
 
+  /**
+   * Initialization function that gets article data or fills in
+   * defaults if the article is new
+   */
   ngOnInit(): void {
     this.username = this.auth.getUsername();
     /** Fetch articleId from the route in browser search bar */
@@ -71,11 +80,11 @@ export class ArticleDetailsComponent implements OnInit {
   }
 
 
-  /** To not allow user to add duplicate tags */
   /**
+   * Filter function to disallow user to add duplicate tags
    * 
-   * @param searchValue entered by user
-   * @param item list of selected items
+   * @param {string} searchValue entered by user
+   * @param {Object} item list of selected items
    */
   defaultFilterOption = (searchValue, item) => {
     if (item && item.nzLabel && typeof (item.nzLabel) !== 'object') {
@@ -87,7 +96,9 @@ export class ArticleDetailsComponent implements OnInit {
   };
 
 
-  /** Create / Update article in database */
+  /**
+   * Create / Update article in database
+   */
   save() {
 
     /** Everytime assign latest date to 'updatedAt' while editing or creating article */
@@ -123,7 +134,9 @@ export class ArticleDetailsComponent implements OnInit {
     }
   }
 
-  /** It gets called when user uploads an image to extract the objects out of it */
+  /**
+   * It gets called when user uploads an image to extract the objects out of it
+   */
   handleChange(data: NzUploadChangeParam) {
     const file = { ...data.file };
 
@@ -132,13 +145,17 @@ export class ArticleDetailsComponent implements OnInit {
     console.log(file);
   }
 
-  /** routing back */
+  /**
+   * Routing back
+   */
   goBack() {
     this.location.back();
     console.log("back");
   }
 
-  /** When blur, if users has already entered any search value, convert it into the tag */
+  /**
+   * When blur, if users has already entered any search value, convert it into the tag
+   */
   onBlur() {
     if (this.searchValue) {
       this.article.tags = [...this.article.tags, this.searchValue];

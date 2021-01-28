@@ -1,15 +1,20 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 
+/**
+ * The navbar component that gets rendered on the top of every page
+ */
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
   constructor() {}
 
-  // listens for a click
+  /**
+  * Listens for a click event
+  */
   @HostListener('click', ['$event']) onClick() {
       document
       .querySelector('#mobile-menu')
@@ -18,6 +23,4 @@ export class NavbarComponent implements OnInit {
       .querySelector('.navbar__menu')
         .classList.toggle('active')
   }
-
-  ngOnInit(): void {}
 }

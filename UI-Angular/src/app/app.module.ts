@@ -29,6 +29,9 @@ import { ItemListComponent } from './account/item-list/item-list.component';
 
 registerLocaleData(en);
 
+/**
+ * Declaring all components and importing relevant services
+ */
 @NgModule({
   declarations: [
     AppComponent,

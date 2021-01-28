@@ -29,6 +29,7 @@ var userId;
 // Run the article integration first, as this relies on that systems
 require('./article.js');
 
+// Test the item functionality and how it integrates with all other API features
 describe('Items along with all other integration', function () {
 
     // Test adding an item

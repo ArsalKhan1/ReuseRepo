@@ -1,3 +1,8 @@
+/**
+ * Generate a random string for testing purposes
+ * 
+ * @param {int} length the length of the string to generate
+ */
 function randomString(length) {
     let random = '';
     let characters = 'abcdefghijklmnopqrstuvwxyz';
@@ -7,6 +12,11 @@ function randomString(length) {
     return random;
 }
 
+/**
+ * Generate a random email address for testing purposes
+ * 
+ * @param {int} length the length of the email to generate (not including the domain)
+ */
 function randomEmail(length) {
     return randomString(length) + "@gmail.com"
 }
@@ -15,6 +25,7 @@ exports.randomString = (length) => randomString(length);
 
 exports.randomEmail = (length) => randomEmail(length);
 
+// A user filled with randomly generated data to be used by tests
 exports.testUser = {
     firstName: randomString(7),
     lastName: randomString(7),

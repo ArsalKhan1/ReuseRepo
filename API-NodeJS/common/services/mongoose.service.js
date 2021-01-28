@@ -8,6 +8,9 @@ const config = require('../config/env.config');
 
 mongoose.set('useFindAndModify', false);
 
+/**
+ * Options for the MongoDB connection
+ */
 const options = {
     dbName: 'ReuseRepo',
     autoIndex: false, // Don't build indexes

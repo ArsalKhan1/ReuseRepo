@@ -10,6 +10,9 @@ import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { environment } from '../../environments/environment';
 import { AuthenticationService } from '../services/authentication.service';
 
+/**
+ * A component for users to search for articles by material tags
+ */
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -40,9 +43,11 @@ export class SearchComponent {
   searchValue: string;
 
   /**
+   * Constructor that imports the appropriate services
    * 
-   * @param sanitizer to sanitize content
-   * @param http to make API request to backend
+   * @param {Object} sanitizer to sanitize content
+   * @param {Object} http to make API request to backend
+   * @param {Object} auth to check if the user is logged in
    */
   constructor(
     /** injected sanitizer to use it later to sanitize content to avoid xss attacks */
@@ -55,19 +60,23 @@ export class SearchComponent {
     private auth: AuthenticationService
   ) { }
 
+  /**
+   * Initialization function that checks if the user is logged in to render  
+   * appropriate buttons
+   */
   ngOnInit() {
     this.loggedIn = this.auth.isLoggedIn();
   }
 
-  /** It gets called when user uploads an image to extract the objects out of it */
   /**
+   * Called when user uploads an image to extract the objects out of it
    * 
-   * @param data based on upload file(s) event 
+   * @param {NzUploadChangeParam} data based on upload file(s) event
    */
   handleChange(data: NzUploadChangeParam) {
     const file = { ...data.file };
 
-    /** creats a url which is used to show the image in search tags */
+    /** creates a url which is used to show the image in search tags */
     const url = URL.createObjectURL(file.originFileObj);
     if (file?.response?.data) {
 
@@ -81,11 +90,11 @@ export class SearchComponent {
 
 
 
-  /** to avoid adding duplicate tags */
   /**
+   * Filter to avoid duplicating tags
    * 
-   * @param searchValue entered by user
-   * @param item  list
+   * @param {tsring} searchValue entered by user
+   * @param {Object} item list
    */
   defaultFilterOption = (searchValue, item) => {
     if (item && item.nzLabel && typeof (item.nzLabel) !== 'object') {
@@ -96,8 +105,9 @@ export class SearchComponent {
     }
   };
 
-  /** It gets called when user clicks on search */
-
+  /**
+   * Handle request when user clicks on search
+   */
   search() {
 
     /** Map the tags in proper format as expected by Article schema in Backend */
@@ -116,17 +126,20 @@ export class SearchComponent {
     }
   }
 
-  /** DomSanitizer helps preventing Cross Site Scripting Security bugs (XSS) by sanitizing values to be safe to use in the different DOM contexts. */
-  /** Here we have image url and we are sanitizing it and make it safe */
+
   /**
+   * DomSanitizer helps preventing Cross Site Scripting Security bugs (XSS) by sanitizing values to be safe to use in the different DOM contexts.
+   * Here we have an image url and we are sanitizing it and make it safe
    * 
-   * @param url upoaded image url
+   * @param {string} url upoaded image url
    */
   sanitizeImageURL(url) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
-  /** When blur, if users has already entered any search value, convert it into the tag */
+  /**
+   * When blur, if users has already entered any search value, convert it into the tag
+   */
   onBlur() {
     if (this.searchValue) {
       this.selectedSearch = [...this.selectedSearch, this.searchValue];

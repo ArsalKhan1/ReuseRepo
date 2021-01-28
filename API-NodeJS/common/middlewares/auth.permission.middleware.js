@@ -1,13 +1,10 @@
-const jwt = require('jsonwebtoken'),
-    secret = require('../config/env.config')['jwt_secret'];
-
 const ADMIN_PERMISSION = require('../config/env.config').permissionLevels.ADMIN;
 const ArticleModel = require('../../article/models/article.model');
 
 /**
  * Check that the user has a certain level of permission before continuing the request
  * 
- * @param {Number} requiredLevel - the minimum required permission level
+ * @param {Number} requiredLevel the minimum required permission level
  * @returns {Object} an http response if theres an error, the return value of the next callback otherwise
  */
 exports.requirePermissionLevel = (requiredLevel) => {
@@ -25,9 +22,9 @@ exports.requirePermissionLevel = (requiredLevel) => {
  * Check that the request is pulling data from the same user
  * that made the request, or that the request came from an admin
  * 
- * @param {Object} req - the http request
- * @param {Object} res - the http response
- * @param {Function} next - a callback to the next function to be run
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ * @param {Function} next a callback to the next function to be run
  * @returns {Object} an http response if error, the return value of the callback otherwise
  */
 exports.requireSameUser = (req, res, next) => {
@@ -49,9 +46,9 @@ exports.requireSameUser = (req, res, next) => {
  * Check that the request on the article is coming from the author
  * or an admin
  * 
- * @param {Object} req - the http request
- * @param {Object} res - the http response
- * @param {Function} next - a callback to the next function to be run
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ * @param {Function} next a callback to the next function to be run
  * @returns {Object} an http response if error, the return value of the callback otherwise
  */
 exports.requireSameAuthor = async (req, res, next) => {

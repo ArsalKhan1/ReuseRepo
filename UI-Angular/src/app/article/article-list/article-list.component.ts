@@ -1,9 +1,9 @@
 /**
-   * article list component
-   * @remarks
-   * renders a list of articles.
-   * if user is logged in and have admin rights, it will let user edit or delete the articles
-   */
+  * article list component
+  * @remarks
+  * renders a list of articles.
+  * if user is logged in and have admin rights, it will let user edit or delete the articles
+  */
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +11,9 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 
+/**
+ * A component to list articles based on a few filter preferences
+ */
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
@@ -24,12 +27,23 @@ export class ArticleListComponent implements OnInit {
   username: string;
   userId: string;
 
+  /**
+   * Constructor that imports the appropriate services
+   * 
+   * @param {Object} http Angular http client to make API requests
+   * @param {Object} auth authentication service to get data and check sign in status
+   * @param {Object} router Angular router service to navigate the app
+   */
   constructor(
     private http: HttpClient,
     private auth: AuthenticationService,
     private router: Router
   ) { }
 
+  /**
+   * Initialization function that gets article and item data
+   * and redirects if not logged in
+   */
   ngOnInit(): void {
     if(!this.auth.isLoggedIn()) {
       this.router.navigateByUrl('/article/search');
@@ -41,8 +55,8 @@ export class ArticleListComponent implements OnInit {
   }
 
   /*
-    fetch articles based on user's preference either "all" or "my articles"
-    articles will be sorted by "DESC" by the field "updatedAt"
+    fetch articles based on user's preference either "all", "my articles",
+    or "articles for me" articles will be sorted by "DESC" by the field "updatedAt"
   */
 
   fetchArticles() {
@@ -76,6 +90,9 @@ export class ArticleListComponent implements OnInit {
     });
   }
 
+  /**
+   * Make an API request to get the user's list of items
+   */
   fetchItems() {
     this.http.get(`${environment.apiURL}users/${this.userId}/items`, { headers: { Authorization: `Bearer ${this.auth.getToken()}` } }).subscribe((items: any) => {
       this.items = items;
@@ -85,8 +102,8 @@ export class ArticleListComponent implements OnInit {
   /**
    * Delete an article
    * 
-   * @param article - article to be deleted 
-   * @param index - index of the article to be deleted
+   * @param {Object} article article to be deleted
+   * @param {int} index index of the article to be deleted
    */
   delete(article, index: number) {
     this.http.delete(`${environment.apiURL}article/${article._id}`,

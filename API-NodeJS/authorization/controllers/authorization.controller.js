@@ -1,13 +1,13 @@
-const jwtSecret = require('../../common/config/env.config.js').jwt_secret,
-    jwt = require('jsonwebtoken');
+const jwtSecret = require('../../common/config/env.config.js').jwt_secret;
+const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const uuid = require('uuid');
 
 /**
  * Process a user login request
  * 
- * @param {Object} req - the http request
- * @param {Object} res - the http response 
+ * @param {Object} req the http request
+ * @param {Object} res the http response 
  */
 exports.login = (req, res) => {
     try {

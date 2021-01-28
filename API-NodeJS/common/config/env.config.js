@@ -1,5 +1,5 @@
 /**
- * The config module for API service
+ * Global variables used by the API
  */
 
 module.exports = {

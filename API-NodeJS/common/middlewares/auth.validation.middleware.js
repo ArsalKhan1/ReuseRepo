@@ -2,6 +2,14 @@ const jwt = require('jsonwebtoken');
 const secret = require('../config/env.config.js').jwt_secret;
 const crypto = require('crypto');
 
+/**
+ * Check that the appropriate fields exist to refresh the JWT
+ * 
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ * @param {Function} next a callback to the next function
+ * @returns {Object} an http response if theres an error, the return value of the next callback othwerwise
+ */
 exports.verifyRefreshBodyField = (req, res, next) => {
     if (req.body && req.body.refresh_token) {
         return next();
@@ -10,6 +18,14 @@ exports.verifyRefreshBodyField = (req, res, next) => {
     }
 };
 
+/**
+ * Check if the JWT refresh token is valid before proceeding
+ * 
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ * @param {Function} next a callback to the next function
+ * @returns {Object} an http response if theres an error, the return value of the next callback otherwise
+ */
 exports.validRefreshNeeded = (req, res, next) => {
     let b = Buffer.from(req.body.refresh_token, 'base64');
     let refresh_token = b.toString();
@@ -25,8 +41,8 @@ exports.validRefreshNeeded = (req, res, next) => {
 /**
  * Check if the request came with a valid auth token
  *
- * @param {Object} req - the http request
- * @param {Object} res - the http response
+ * @param {Object} req the http request
+ * @param {Object} res the http response
  * @param {Function} next - a callback to the next function to be run
  * @returns {Object} an http response if theres an error, the return value of the next callback otherwise
  */

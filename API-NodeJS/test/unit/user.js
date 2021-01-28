@@ -8,6 +8,7 @@ chai.use(chaiHttp);
 
 let testUser = utilities.testUser;
 
+// Test the user service in isolation
 describe('User', function () {
 
     // Test adding a user

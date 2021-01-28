@@ -4,9 +4,9 @@ const crypto = require('crypto');
 /**
  * Checks if the required th authorization fields are in the http request
  * 
- * @param {Object} req - the http request
- * @param {Object} res - the https response object
- * @param {Function} next - the callback function used to chain to the next opertaion
+ * @param {Object} req the http request
+ * @param {Object} res the https response object
+ * @param {Function} next the callback function used to chain to the next opertaion
  */
 exports.hasAuthValidFields = (req, res, next) => {
     let errors = [];
@@ -32,9 +32,9 @@ exports.hasAuthValidFields = (req, res, next) => {
 /**
  * Validates the authorization fields in the http request
  *
- * @param {Object} req - the http request
- * @param {Object} res - the https response object
- * @param {Function} next - the callback function used to chain to the next opertaion
+ * @param {Object} req the http request
+ * @param {Object} res the https response object
+ * @param {Function} next the callback function used to chain to the next opertaion
  */
 exports.isPasswordAndUserMatch = (req, res, next) => {
     UserModel.findByEmail(req.body.email)
@@ -55,7 +55,7 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
                     };
                     return next();
                 } else {
-                    return res.status(400).send({errors: ['Invalid e-mail or password']});
+                    return res.status(400).send({errors: ['Invalid email or password']});
                 }
             }
         });

@@ -35,7 +35,7 @@ articleSchema.virtual('id').get(function () {
 
 /**
  * finds article by id
- * @param {any} id the article id
+ * @param {any} cb the callback function for after the search
  * @returns {article} the article object
  */
 articleSchema.findById = function (cb) {
@@ -60,7 +60,7 @@ exports.findById = (id) => {
 
 /**
  * saves article in the data store
- * @param {any} the articleData the article object 
+ * @param {any} articleData the articleData the article object 
  * @returns {Promise} a promise that is executed by contoller or caller to create the article
  */
 exports.createArticle = (articleData) => {
@@ -71,7 +71,7 @@ exports.createArticle = (articleData) => {
 
 /**
  * filters articles by tags and/or author id
- * @param {any} the query object containin sort, filter, tags 
+ * @param {any} query the object containing sort, filter, and tag data
  * @returns {Promise} a promise that is executed by contoller or caller to get the list of articles
  */
 exports.filter = (query) => {
@@ -109,8 +109,8 @@ exports.filter = (query) => {
 
 /**
  * updates articles 
- * @param {int} the id for the article
- * @param {article} the articleData with data for the article object
+ * @param {int} id the id for the article
+ * @param {article} articleData the articleData with data for the article object
  * @returns {Promise} a promise that is executed by contoller or caller to update article info
  */
 exports.patchArticle = (id, articleData) => {
@@ -121,7 +121,7 @@ exports.patchArticle = (id, articleData) => {
 
 /**
  * removes article
- * @param {int} the articleId for the article
+ * @param {int} articleId articleId for the article
  * @returns {Promise} a promise that is executed later by contoller or caller to delete article
  */
 exports.removeById = (articleId) => {
