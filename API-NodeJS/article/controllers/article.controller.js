@@ -1,5 +1,8 @@
 /** The Article controller which serves as a controller between incoming requests via api and queries or updates the datastore */
 const ArticleModel = require('../models/article.model');
+const UserModel = require('../../users/models/users.model');
+const jwt = require('jsonwebtoken');
+const secret = require('../../common/config/env.config').jwt_secret;
 
 
 /**
@@ -8,18 +11,42 @@ const ArticleModel = require('../models/article.model');
  * @param {Object} req the http request the brings filter query 
  * @param {Object} res the http response that renders an array of articles
  */
-exports.search = (req, res) => {
+exports.search = async (req, res) => {
 
     // req.body.query=lists filter criteria coming from browser
-    ArticleModel.filter(req.body.query)
+    let articles = await ArticleModel.filter(req.body.query)
         .then((articles) => {
-            // send 200 to indicate to browser that call was successful and send the result which is list of articles
-            res.status(200).send(articles);
+            return articles;
         })
         .catch((err) => {
             console.log(err);
             res.satutus(400).send(err);
+            return null;
         });
+    
+    if(articles === null) {
+        return;
+    }
+    if(!req.body.query.exclusive) {
+        res.status(200).send(articles);
+        return;
+    }
+
+    let allTags = [];
+    for (let i = 0; i < req.body.query.tags.length; i++) {
+        let tag = req.body.query.tags[i].name;
+        allTags.push(tag.toLowerCase());
+    }
+    for (let i = 0; i < articles.length; i++) {
+        let article = articles[i];
+        for (let t = 0; t < article.tags.length; t++) {
+            let tag = article.tags[t].name;
+            if(!allTags.includes(tag.toLowerCase())) {
+                articles.splice(i, 1);
+            }
+        }
+    }
+    res.status(200).send(articles);
 };
 
 

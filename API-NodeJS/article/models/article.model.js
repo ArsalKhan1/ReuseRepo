@@ -77,7 +77,7 @@ exports.createArticle = (articleData) => {
 exports.filter = (query) => {
     return new Promise((resolve, reject) => {
         const filterQuery = [];
-        // condition ? value if true 
+        // condition ? value if true
         // if query.sort is present then set query.sort.field = "udpateAt".  field is a column in table 
         // if query.sort is present then set query.sort.order = -1 which is descending
         const sort = { [query.sort ? query.sort.field : 'updatedAt']: query.sort ? query.sort.order : -1 };

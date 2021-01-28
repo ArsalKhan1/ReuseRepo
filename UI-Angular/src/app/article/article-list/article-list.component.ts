@@ -20,7 +20,9 @@ export class ArticleListComponent implements OnInit {
 
   tabPosition = 'all';
   articles = [];
+  items = [];
   username: string;
+  userId: string;
 
   constructor(
     private http: HttpClient,
@@ -34,6 +36,8 @@ export class ArticleListComponent implements OnInit {
     }
     this.fetchArticles();
     this.username = this.auth.getUsername();
+    this.userId = this.auth.getData().userId;
+    this.fetchItems();
   }
 
   /*
@@ -51,10 +55,30 @@ export class ArticleListComponent implements OnInit {
       listArticleQuery = { query: { authorUsername: this.username, sort: sortObj } };
     }
     else {
-      listArticleQuery = { query: { authorUsername: this.username, sort: sortObj } };
+      let itemTags = [];
+      this.items.forEach(item => {
+        item.tags.forEach(tag => {
+          itemTags.push(tag);
+        });
+      });
+
+      let uniqueTags = [...new Set(itemTags)];
+
+      let tagObjects = [];
+      uniqueTags.forEach(tag => {
+        tagObjects.push({name: tag});
+      });
+
+      listArticleQuery = { query: { exclusive: true, sort: sortObj, tags: tagObjects }, jwt: this.auth.getToken() };
     }
     this.http.post(`${environment.apiURL}article/search`, listArticleQuery).subscribe((articles: any) => {
       this.articles = articles;
+    });
+  }
+
+  fetchItems() {
+    this.http.get(`${environment.apiURL}users/${this.userId}/items`, { headers: { Authorization: `Bearer ${this.auth.getToken()}` } }).subscribe((items: any) => {
+      this.items = items;
     });
   }
 
