@@ -16,8 +16,8 @@
 + Setup a MongoDB data store locally on in cloud. We used CosmosDB in [Azure](https://portal.azure.com) with MongoDB APIs.
 
 ### 2. Start APIs
-+ Navigate to [/API-NodeJS/common/config/eng.config.js](/API-NodeJS/common/config/eng.config.js) and point the DBName to your datastore. 
-+ Execute following commands via command shell in [/API-NodeJS](/API-NodeJS]): 
++ Navigate to [API-NodeJS/common/config/env.config.js](API-NodeJS/common/config/env.config.js) and point the DBName to your datastore. 
++ Execute following commands via command shell in [API-NodeJS](API-NodeJS): 
     - `npm install` - This will pull nodepackages via npm
     - `npm start`   - This will start the web server on port 3600
 
@@ -25,8 +25,8 @@
     - `npm test`    - This will run the unit and integrated tests
 
 ### 3. Start Web Site
-+ Navigate to [/API-NodeJS/common/config/eng.config.js](/API-NodeJS/common/config/eng.config.js) and point the DBName to your datastore 
-+ Execute following commands via command shell in [/API-NodeJS](/API-NodeJS])  
++ Navigate to [API-NodeJS/common/config/env.config.js](API-NodeJS/common/config/env.config.js) and point the DBName to your datastore 
++ Execute following commands via command shell in [API-NodeJS](API-NodeJS)  
     - `npm install` - This will pull nodepackages via npm
     - `ng serve`    - This will start the website on port 4200
 
@@ -49,7 +49,6 @@ The application uses 3 tiers architecture
 ## Citation and Credits
    + [Angular](https://angular.io/) and [Material Design](https://material.io/design) by Google
    + [Creating Secure APIs in NodeJS](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs) by [Marcos Henrique da Silva](https://github.com/makinhs)
-   [VP] 
    + vector images from [unDraw](https://undraw.co/)
    + icons from [Font Awesome](https://fontawesome.com/)
    + fonts from [Google Fonts](https://fonts.google.com/specimen/Kumbh+Sans)
