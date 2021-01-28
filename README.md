@@ -7,6 +7,8 @@
  We created a community website that helps people find and create ideas to reuse items that otherwise would go in the garbage or recycling.
  
    ![demo](images/DemoSearch.gif) 
+   ![demo](images/DemoArticle.gif)
+   ![demo](images/DemoItemList.gif)
 
 ---
 
