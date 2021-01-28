@@ -98,9 +98,13 @@ The application uses 3 tiers architecture
    
    ![](images/footers.gif)
    
-   [VP] Removed social media section and media icons, moved copyrights to the bottom
+   [VP] Removed social media section and media icons, moved the website rights to the bottom
    
    ![](images/footer2.0.png)
+   
+   [VP] Made the footer slimer and moved the website rights to the right
+   
+   ![](images/footer3.0.png)
    
 
 ### 2. API (NodeJS and ExpressJS)
