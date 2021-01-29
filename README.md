@@ -59,5 +59,5 @@ The application uses 3 tiers architecture
 
 ## Project Plan  
    + [Software Scope](Documentation/SoftwareScopeDocument.pdf)
-   + [The WBS along with Project Calendar](Documentation/WBS.md) 
-   + [The QA Plan](TBD)   
+   + [The WBS along with Project Timeline](Documentation/WBS.md) 
+   + [The QA Plan](Documentation/SQA.md)   
