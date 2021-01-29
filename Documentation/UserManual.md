@@ -3,7 +3,7 @@
 ## Overview
 We created a community website that helps people find and create ideas to reuse items those otherwise would go in the garbage or recycling. 
 
-![demo](../images/demo.gif)
+   ![demo](../images/DemoSearch.gif) 
 
 ---
 
@@ -42,22 +42,8 @@ The site does not log out the user automatically unless user clicks logout butto
 ![logout](../images/um-logout.png)
 
 ---
-## 2. Lists / Views
-Once user is logged in, user has access to two set of articles 
+## 3. Articles
 
-### All Articles
-This lists all the articles including user's own articles. The user can click on articles to see the details of the article. If user is the author of the article, you will have the option to edit or delet the article.
-
-### My Articles
-This lists all the articles written by logged in user. The user can click on articles to see the details, or to edit or delete the article.
-
-### Articles For Me
-Instead of searching the articles every time, user can maintain a watch list of tags and all the articles , which are tagged with user's desired tags, will be listed here.
-
-
----  
-
-## Article Management
 ### Create Article
 A logged in user can create article by clicking on `New Article` button. Clicking on Create button takes user to Article page where you can enter:
 + Title: A meaningful and easy to unnderstand title.
@@ -73,7 +59,25 @@ A logged in user can update his or her articles. The user can navigate to the ar
 + Title: A meaningful and easy to unnderstand title.
 + Tags: List of words or phrases that people can use to search for this article. User has to press enter to convert word phrase to a tag.
 + Details: The details about how to reuse a sepcific item.
-+ Image: Optionally, user can add link to an image.
++ Image: Optionally, user can add link to an image.  
 
 ### Remove Article 
-A logged in user can detele his or her articles. The user can navigate to the article throuhg any of the lists or searches.
+A logged in user can detele his or her articles. The user can navigate to the article throuhg any of the lists or searches.  
+
+
+### Article Lists
+Once user is logged in, user has access to three set of articles 
+
++ All Articles
+This lists all the articles including user's own articles. The user can click on articles to see the details of the article. If user is the author of the article, you will have the option to edit or delet the article.
+
++ My Articles
+This lists all the articles written by logged in user. The user can click on articles to see the details, or to edit or delete the article.
+
++ Articles For Me
+Instead of searching the articles every time, user can maintain a watch list of tags and all the articles , which are tagged with user's desired tags, will be listed here.  
+
+
+![demo](../images/DemoArticle.gif)
+![demo](../images/DemoItemList.gif)
+
