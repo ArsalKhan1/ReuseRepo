@@ -1,8 +1,8 @@
 ## Acronyms & Abbreviations
-DB		Database
-JS		JavaScript
-UI		User Interface
-SQA		Software Quality Assurance
+DB		Database <br>
+JS		JavaScript <br>
+UI		User Interface <br>
+SQA		Software Quality Assurance <br>
 
 # SQA Process
 
