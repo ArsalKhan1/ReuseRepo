@@ -1,6 +1,6 @@
 # ReuseRepo
 
- Website: [http://www.ReuseRepo.com](https://reuserepo.azurewebsites.net)  
+ Website: [https://reuserepo.azurewebsites.net](https://reuserepo.azurewebsites.net)  
  Team: [Arsal Khan](https://github.com/ArsalKhan1), [Rayhaan Tanweer](https://github.com/RayhaanT), [Vijay Patnaik](https://github.com/VijayTheGr8)  
  Repo: [https://github.com/ArsalKhan1/ReuseRepo](https://github.com/ArsalKhan1/ReuseRepo)  
   
@@ -34,7 +34,7 @@ Please find detailed descritpion of the functionalities and more demos in [user 
 
 + Optionally, you can use following commands:
     - `npm test`    - This will run the unit and integrated tests
-    - `ng build --prod` - This will build the project for prod deployment. The build artifacts will be stored in the [dist](/UI-Angular/dist) folder
+    - `ng build --prod` - This will build the project for prod deployment. The build artifacts will be stored in the `dist` folder
     - `ng test`     - This will execute the unit tests via [Karma](https://karma-runner.github.io)
     - `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/)
 
