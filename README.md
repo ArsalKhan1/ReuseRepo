@@ -33,9 +33,8 @@ Please find detailed descritpion of the functionalities and more demos in [user 
     - `ng serve`    - This will start the website on port 4200
 
 + Optionally, you can use following commands:
-    - `npm test`    - This will run the unit and integrated tests
+    - `npm test`    - This will run the unit and integrated tests via [Mocha](https://mochajs.org/)
     - `ng build --prod` - This will build the project for prod deployment. The build artifacts will be stored in the `dist` folder
-    - `ng test`     - This will execute the unit tests via [Karma](https://karma-runner.github.io)
     - `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/)
 
 ---
