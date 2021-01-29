@@ -6,7 +6,9 @@
   
  We created a community website that helps people find and create ideas to reuse items that otherwise would go in the garbage or recycling.
  
-   ![demo](images/demo.gif) 
+   ![demo](images/DemoSearch.gif) 
+
+Please find detailed descritpion of the functionalities and more demos in [user manual](Documentation/UserManual.md)
 
 ---
 
@@ -49,6 +51,7 @@ The application uses 3 tiers architecture
 ## Citation and Credits
    + [Angular](https://angular.io/) and [Material Design](https://material.io/design) by Google
    + [Creating Secure APIs in NodeJS](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs) by [Marcos Henrique da Silva](https://github.com/makinhs)
+   + [Detect multiple objects API](https://cloud.google.com/vision/docs/object-localizer) by Google
    + vector images from [unDraw](https://undraw.co/)
    + icons from [Font Awesome](https://fontawesome.com/)
    + fonts from [Google Fonts](https://fonts.google.com/specimen/Kumbh+Sans)
