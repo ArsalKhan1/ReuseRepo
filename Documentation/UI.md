@@ -6,43 +6,43 @@
    
    [VP] Added thumbnails for articles that have images
    
-   ![](images/thumbnail.png) 
+   ![](../images/thumbnail.png) 
    
    [VP] Upgraded Home Page with dynamic navbar (now responsive to resizing)
    
-   ![](images/homepage.gif)
+   ![](../images/homepage.gif)
    
    [VP] Services cards to navigate (responsive to resizing)
    
-   ![](images/cards.gif)
+   ![](../images/cards.gif)
    
    [VP] Changed the homepage image
    
-   ![](images/homepage3.0.png)
+   ![](../images/homepage3.0.png)
    
    [VP] Added a leaf icon to the tab
    
-   ![](images/icon.png)
+   ![](../images/icon.png)
    
    ### Navbar
    
    [VP] Added icons to the navbar
    
-   ![](images/homepage2.0.png)
+   ![](../images/homepage2.0.png)
    
    ### Footer
    
    [VP] Added footer (responsive to resizing)
    
-   ![](images/footers.gif)
+   ![](../images/footers.gif)
    
    [VP] Removed social media section and media icons, moved the website rights to the bottom
    
-   ![](images/footer2.0.png)
+   ![](../images/footer2.0.png)
    
    [VP] Made the footer slimer and moved the website rights to the right
    
-   ![](images/footer3.0.png)
+   ![](../images/footer3.0.png)
    
 
 ### 2. API (NodeJS and ExpressJS)
