@@ -100,18 +100,18 @@
     border: none;
     outline: none;
     border-radius: 4px;
-    background: lightgreen;
-    color: black;
+    background: rgb(24, 144, 255);
+    color: white;
 }
 
 .button:hover {
-    background: rgb(89, 223, 89);
+    background: rgb(24, 144, 255);
     color: black;
     transition: all 0.3s ease-in;
 }
 
 .navbar__links:hover {
-    color: rgb(81, 204, 81);
+    color: rgb(24, 144, 255);
     transition: all 0.3s ease;
 }
 
