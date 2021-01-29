@@ -58,20 +58,6 @@ The application uses 3 tiers architecture
 ---
 
 ## Project Plan  
-   + [The project specs](Documentation/SofwareScope.md)
+   + [Software Scope](Documentation/Software Scope Document.pdf)
    + [The WBS along with Project Calendar](Documentation/WBS.md) 
-   + [The QA Plan](TBD)
-  
- 
-# Progress Log (to be deleted after pieces are moved to documentation folder)
-
-## Hosting
-   [AK] Signed up for azure free hosting acount with $200 credit.  
-   [AK] Built angular for deployment  
-        ng build --prod  
-        Deployed to [https://reuserepo.azurewebsites.net/#/article/search](https://reuserepo.azurewebsites.net/#/article/search)  
-        Hosted the site following this [post](https://www.c-sharpcorner.com/article/easily-deploy-angular-app-to-azure-from-visual-studio-code/)         
-
-        Hosted latest version with search and list functionality 
-   ![](images/6-reuserepo-azurewebsite.png) 
-   
+   + [The QA Plan](TBD)   
